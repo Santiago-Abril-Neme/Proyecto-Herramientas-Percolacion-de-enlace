@@ -1,7 +1,6 @@
 #include <iostream>
 #include <bits/stdc++.h> 
 #include <vector>
-#include <random>
 #include <fstream>
 
 using namespace std;
@@ -97,19 +96,14 @@ int main() {
 		}
 	}
 
-	
-	 //Numero aleatorio
 
-  random_device rd;
-  mt19937 gen(rd());
-  uniform_real_distribution<> dist(0, 1);
 
   ofstream Matriz_interconexion;
   Matriz_interconexion.open("Matriz_interconexion_sq.csv");
 
   int parejas = results_i.size();
   for(int i=0; i<parejas;i++){
-    Matriz_interconexion<<results_i[i]<< "," <<results_j[i]<< "," << dist(gen) << endl;		
+    Matriz_interconexion<<results_i[i]<< "," <<results_j[i] << endl;		
   }
 	return 0;
 }
