@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pylab as plt
+plt.rcParams['figure.dpi'] = 300
 
 M=np.genfromtxt("Matriz_interconexion_tr.csv", delimiter=",")
 

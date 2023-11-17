@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const int N=20; //Lado de la malla
+const int N=100; //Lado de la malla
 
 //La funcion vecinos_malla_triangular recibe el numero de una particula (i) y devuelve el numero de las particulas vecinas.
 

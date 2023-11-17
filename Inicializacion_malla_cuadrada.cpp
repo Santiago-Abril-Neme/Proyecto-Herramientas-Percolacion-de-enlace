@@ -1,11 +1,12 @@
 #include <iostream>
 #include <bits/stdc++.h> 
 #include <vector>
+#include <random>
 #include <fstream>
 
 using namespace std;
 
-const int N=100; //Lado de la malla
+const int N=20; //Lado de la malla
 
 //La funcion vecinos_malla_cuadrada recibe el numero de una particula (i) y devuelve el numero de las particulas vecinas.
 
@@ -59,11 +60,11 @@ vector<int> vecinos_malla_cuadrada(int i){
   	  	neighbors.push_back(i-N);
  	 }
   	//VII)
- 	 else if(i%N==0 && i!=N && i!=N*N){
- 	   neighbors.push_back(i-1);
-   	 neighbors.push_back(i+N);
- 	   neighbors.push_back(i-N);
- 	 }
+ 	else if(i%N==0 && i!=N && i!=N*N){
+ 	    neighbors.push_back(i-1);
+   		neighbors.push_back(i+N);
+ 	    neighbors.push_back(i-N);
+ 	}
   	//VIII)
   	else if((i>N*(N-1)+1) && (i<N*N)){
     	neighbors.push_back(i+1);
@@ -82,10 +83,14 @@ vector<int> vecinos_malla_cuadrada(int i){
 
 
 int main() {
-
-	vector<int> results_i;
+	
+	
+	//Vectores que contendran las parejas de puntos entre los cuales se puede presentar un enlace 
+	vector<int> results_i; 
 	vector<int> results_j;
 	
+	
+	//Guarda las parejas de puntos sin repetirlas cuando i<vecinos(j)
 	for(int i=1; i<=N*N; i++){
 		vector<int> vecinos = vecinos_malla_cuadrada(i);
 		for(int j=0; j<vecinos.size(); j++){
@@ -96,14 +101,14 @@ int main() {
 		}
 	}
 
-
-
-  ofstream Matriz_interconexion;
-  Matriz_interconexion.open("Matriz_interconexion_sq.csv");
-
-  int parejas = results_i.size();
-  for(int i=0; i<parejas;i++){
-    Matriz_interconexion<<results_i[i]<< "," <<results_j[i] << endl;		
-  }
+	//Se guardan las parejas en un archivo csv
+	ofstream Matriz_interconexion;
+	Matriz_interconexion.open("Matriz_interconexion_sq.csv");
+	
+	int parejas = results_i.size();
+	for(int i=0; i<parejas;i++){
+	    Matriz_interconexion<<results_i[i]<< "," <<results_j[i] << endl;		
+	}
+	
 	return 0;
 }
